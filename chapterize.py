@@ -5,7 +5,7 @@
 import glob, os, tqdm, sys
 
 if len(sys.argv) != 3:
-    print("Usage example: ./chapterize.py concatenated.mp4 '*.mp3'")
+    print("Usage example: " + sys.argv[0] + " concatenated.mp4 '*.mp3'")
     exit()
 
 cattedAudio = sys.argv[1]
