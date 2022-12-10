@@ -17,10 +17,10 @@ inputAudioFiles.sort()
 starttimes=[]
 time = 0 #cummulative start time (nanoseconds)
 for i in tqdm.tqdm(inputAudioFiles):
-    time += float(os.popen('sox ' + i + ' -n stat |& head -2 | tail -1 | grep -o "[0-9.]\+"').read().strip())*1e9
+    time += float(os.popen('sox "' + i + '" -n stat |& head -2 | tail -1 | grep -o "[0-9.]\+"').read().strip())*1e9
     starttimes.append([i, str(int(time))])
 
-metadata = os.popen('ffmpeg -i ' + inputAudioFiles[0] + ' -f ffmetadata -v quiet -').read()
+metadata = os.popen('ffmpeg -i "' + inputAudioFiles[0] + '" -f ffmetadata -v quiet -').read()
 
 # https://ffmpeg.org/ffmpeg-formats.html#Metadata-1
 # "If the timebase is missing then start/end times are assumed to be in 𝗻𝗮𝗻𝗼𝘀𝗲𝗰𝗼𝗻𝗱𝘀."
