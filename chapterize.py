@@ -17,7 +17,7 @@ inputAudioFiles.sort()
 starttimes=[]
 time = 0 #cummulative start time (nanoseconds)
 for i in tqdm.tqdm(inputAudioFiles):
-    time += float(os.popen('bash -c \'sox "' + i + '" -n stat |& head -2 | tail -1 | grep -o "[0-9.]\+"\'').read().strip())*1e9
+    time += float(os.popen('bash -c \'sox "' + i + '" -n stat |& head -2 | tail -1 | grep -o "[0-9.]\\+"\'').read().strip())*1e9
     starttimes.append([i, str(int(time))])
 
 metadata = os.popen('ffmpeg -i "' + inputAudioFiles[0] + '" -f ffmetadata -v quiet -').read()
